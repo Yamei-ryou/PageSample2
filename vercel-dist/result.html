@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>おみくじ結果</title>
+    <script>
+        window.onload = function () {
+            // Logic ported from Java Servlet
+
+            // 1. Get today's date
+            const now = new Date();
+            const month = now.getMonth() + 1; // JS months are 0-indexed
+            const day = now.getDate();
+            const dateStr = `${month}月${day}日`;
+
+            // 2. Define results and messages
+            const results = ["大吉", "中吉", "小吉", "凶"];
+            const messages = [
+                "今日は最高の運勢！🐱",
+                "落ち着いていこう🐾",
+                "コツコツ積み重ねが大事にゃ",
+                "逆風だけど、焦らないでにゃ"
+            ];
+
+            // 3. Randomly select a result
+            const index = Math.floor(Math.random() * results.length);
+
+            // 4. Update the DOM
+            document.getElementById("date-display").innerText = `${dateStr} の運勢は……`;
+            document.getElementById("result-display").innerText = `${results[index]} !!!`;
+            document.getElementById("message-display").innerText = messages[index];
+        };
+    </script>
+</head>
+
+<body style='text-align:center; font-size:26px; padding-top:50px;'>
+
+    <h2>🐱 おみくじ結果発表 🐱</h2>
+    <p id="date-display">Loading...</p>
+
+    <h1 id="result-display"></h1>
+    <p id="message-display"></p>
+
+    <br><br>
+    <form action='index.html' method='get'>
+        <button type='submit'>戻る</button>
+    </form>
+
+</body>
+
+</html>
